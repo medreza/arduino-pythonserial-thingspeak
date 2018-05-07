@@ -2,13 +2,14 @@ import serial
 import httplib2
 import re
 
-#Ask COM port number
-comport = raw_input('Serial port? COM')
-try:
-    comport = int(comport)
-except ValueError:
-    print("Fill it with number only. For port COMX, please input X")
-    exit()
+while True:
+    comport = raw_input('Serial port? COM') #Ask COM port number
+    try:
+        comport = int(comport)
+        break
+    except ValueError:
+        print("Fill it with number only. For port COMX, please input X")
+
 arduino = serial.Serial('COM'+str(comport), 115200, timeout=1)
 while True:
         data = arduino.readline() #[:-2]
