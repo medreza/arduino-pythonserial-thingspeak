@@ -19,7 +19,8 @@ while True:
                         print "Read data format : ", matchObj.group()
                         print "Temperature : ", matchObj.group(1)
                         print "Humidity : ", matchObj.group(2)
-                        thingspeakAPI = "https://api.thingspeak.com/update?api_key=<YOUR API KEY HERE>"+"&field1="+matchObj.group(1)+"&field2="+matchObj.group(2)
+                        THINGSPEAK_CHANNEL_API_KEY = "INSERT API KEY HERE" #Change it with your API key
+                        thingspeakAPI = "https://api.thingspeak.com/update?api_key="+THINGSPEAK_CHANNEL_API_KEY+"&field1="+matchObj.group(1)+"&field2="+matchObj.group(2)
                         resp, content = httplib2.Http().request(thingspeakAPI)
                         print thingspeakAPI
                         print resp.status
